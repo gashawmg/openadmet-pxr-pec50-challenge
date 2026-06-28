@@ -1,0 +1,39 @@
+# Model checkpoints (too large for GitHub)
+*.ckpt
+*.pt
+*.pth
+models_*/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Old/intermediate submissions
+blend3_*.csv
+blend4_*.csv
+blend_v3_*.csv
+blends/
+blends_3model/
+blends_4model/
+blend_grid_results.csv
+submission_simple_*.csv
+submission_ridge_*.csv
+submission_*_blend_*.csv
+submission_*_513.csv
+submission_*_uni*.csv
+submission_blend_6022*.csv
+submission_blend_7020*.csv
+submission_blend_5025*.csv
+
+# Personal documents
+*.docx
+*.pptx
+
+# Logs and temp files
+*.log
+*.lock
+.memory/
+PXR_project_session_log.md
+README_github_updated.md
