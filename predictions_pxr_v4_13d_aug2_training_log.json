@@ -1,0 +1,121 @@
+{
+  "script": "train_pec50_pxr_v4_13d.py",
+  "version": "v4_13d",
+  "timestamp": "2026-06-23 16:12:21",
+  "config": {
+    "train_csv": "train_unimol_aug_set1_holdout30_dedup.csv",
+    "inactive_supplement": "sc_inactives_300.csv",
+    "n_training_rows": 4562,
+    "ha_ge_5_5": 502,
+    "ha_ge_6_0": 112,
+    "inact_lt_3_5": 1176,
+    "split_strategy": "activity_scaffold",
+    "sample_weights": false,
+    "high_tail_mult": 3.0,
+    "high_tail_thresh": 5.5,
+    "seed": 42,
+    "mode": "BOTH"
+  },
+  "oof": {
+    "rmse": 0.7203785368809137,
+    "mae": 0.5238495762009857,
+    "r2": 0.6432257466377924,
+    "rae": 0.5230733899538713
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "rmse": 0.6804943084716797,
+      "mae": 0.5072253346443176,
+      "r2": 0.6897194933566104,
+      "best_epoch": 45
+    },
+    {
+      "fold": 2,
+      "rmse": 0.7631862759590149,
+      "mae": 0.549053966999054,
+      "r2": 0.5825881017023198,
+      "best_epoch": 50
+    },
+    {
+      "fold": 3,
+      "rmse": 0.6953568458557129,
+      "mae": 0.5192217230796814,
+      "r2": 0.6638127238767431,
+      "best_epoch": 192
+    },
+    {
+      "fold": 4,
+      "rmse": 0.6888265013694763,
+      "mae": 0.5286334156990051,
+      "r2": 0.6516863162172567,
+      "best_epoch": 24
+    },
+    {
+      "fold": 5,
+      "rmse": 0.70972740650177,
+      "mae": 0.5195217728614807,
+      "r2": 0.6696374167913884,
+      "best_epoch": 70
+    },
+    {
+      "fold": 6,
+      "rmse": 0.7567163705825806,
+      "mae": 0.5369153022766113,
+      "r2": 0.6104755564158848,
+      "best_epoch": 36
+    },
+    {
+      "fold": 7,
+      "rmse": 0.7258530855178833,
+      "mae": 0.5188724398612976,
+      "r2": 0.6553429788059718,
+      "best_epoch": 37
+    },
+    {
+      "fold": 8,
+      "rmse": 0.7250027060508728,
+      "mae": 0.5267847776412964,
+      "r2": 0.6165179622495074,
+      "best_epoch": 23
+    },
+    {
+      "fold": 9,
+      "rmse": 0.7126092314720154,
+      "mae": 0.5244879126548767,
+      "r2": 0.6583352207564617,
+      "best_epoch": 31
+    },
+    {
+      "fold": 10,
+      "rmse": 0.7411276698112488,
+      "mae": 0.5077601075172424,
+      "r2": 0.6209378209055791,
+      "best_epoch": 31
+    }
+  ],
+  "best_epochs": [
+    45,
+    50,
+    192,
+    24,
+    70,
+    36,
+    37,
+    23,
+    31,
+    31
+  ],
+  "avg_best_epoch": 53,
+  "training_time_min": 286.8,
+  "model_dir": "models_pxr_v4_13d_aug2",
+  "output_csv": "predictions_pxr_v4_13d_aug2.csv",
+  "test_predictions": {
+    "n": 513,
+    "min": 2.2887,
+    "max": 6.0378,
+    "mean": 4.7692,
+    "std": 0.8386
+  },
+  "total_time_min": 287.2
+}

@@ -1,8 +1,8 @@
 # Predicting PXR Induction Potency — OpenADMET Blind Challenge
 
 > **Phase 1:** MAE **0.4468** · RAE **0.5606** · R² **0.5459** · Spearman **0.8463** · Kendall's τ **0.6567** · Rank **39**
-> **Phase 2 (intermediate):** RAE **0.5298** · MAE **0.4231** · R² **0.6236** · Spearman **0.8389**
-> **Phase 2 (final submission):** Holdout-30 RAE **0.4471** · `submission_blend_751510.csv`
+> **Phase 2 (final leaderboard):** Rank **#9 / 100+** · MAE **0.4213** · RAE **0.5841** · R² **0.5528** · Spearman **0.8028** · Kendall's τ **0.6221**
+> **Phase 2 (final submission):** `submission_blend_751510.csv` · Holdout-30 RAE **0.4471** (proxy)
 > 75% pp50 + 15% p13d + 10% UniMol · Chemprop D-MPNN + MultitaskMPNN + UniMol 3D Transformer · No proprietary data
 
 ---
@@ -50,7 +50,7 @@ The **[OpenADMET Blind Challenge](https://huggingface.co/spaces/openadmet/pxr-ch
 | Phase | Dates | Description |
 |---|---|---|
 | **Phase 1** | April 1 – May 25, 2026 | Blind prediction for all 513 test compounds; live leaderboard |
-| **Phase 2** | May 26 – July 1, 2026 | Analog Set 1 labels unblinded (252 compounds); refine predictions for Set 2 (261 compounds) |
+| **Phase 2** | May 26 – July 1, 2026 | Analog Set 1 labels unblinded (253 compounds); refine predictions for Set 2 (260 compounds) |
 
 **Ranking metric:** Relative Absolute Error (RAE) = Σ|y−ŷ| / Σ|y−ȳ|. MAE, R², Spearman ρ and Kendall's τ also reported.
 
