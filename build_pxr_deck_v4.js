@@ -26,7 +26,7 @@ const ds=()=>{const s=pres.addSlide();s.background={color:C.navy};return s;};
 s.addText("Predicting PXR Induction Potency",{x:0.65,y:0.7,w:8.7,h:1.05,fontSize:38,bold:true,color:C.white,fontFace:"Trebuchet MS",align:"left",margin:0});
 s.addText("OpenADMET Blind Challenge  ·  Phase 1 & Phase 2  ·  June 2026",{x:0.65,y:1.82,w:8.7,h:0.42,fontSize:16,color:"88C8DC",fontFace:"Calibri",align:"left",margin:0});
 s.addShape(pres.shapes.LINE,{x:0.65,y:2.38,w:3.8,h:0,line:{color:C.mint,width:2}});
-const cards=[{lbl:"Final Rank",val:"#12",sub:"Phase 2 leaderboard"},{lbl:"Phase 1 Rank",val:"#39",sub:"27-place improvement"},{lbl:"Final Blend",val:"75/15/10",sub:"pp50 / p13d / UniMol"},{lbl:"Tools",val:"Open-source",sub:"Chemprop · UniMol · RDKit"}];
+const cards=[{lbl:"OpenADMET Standing",val:"Tier 1",sub:"Activity track, top tier"},{lbl:"Phase 1 → Phase 2",val:"#39 → T1",sub:"27-rank improvement"},{lbl:"Final Blend",val:"75/15/10",sub:"pp50 / p13d / UniMol"},{lbl:"Tools",val:"Open-source",sub:"Chemprop · UniMol · RDKit"}];
 const cx=[0.65,2.88,5.11,7.34];
 cards.forEach((c,i)=>{
   s.addShape(pres.shapes.ROUNDED_RECTANGLE,{x:cx[i],y:2.72,w:2.1,h:1.2,fill:{color:"0D4F6B"},rectRadius:0.07,line:{color:C.teal,width:1}});
@@ -35,7 +35,7 @@ cards.forEach((c,i)=>{
   s.addText(c.sub,{x:cx[i],y:3.59,w:2.1,h:0.2,fontSize:8,color:"4A7A90",fontFace:"Calibri",align:"center",margin:0});
 });
 s.addText("Gashaw  ·  June 2026  ·  Open-source: Chemprop, UniMol, RDKit",{x:0,y:5.27,w:10,h:0.3,fontSize:8.5,color:"3A6A80",fontFace:"Calibri",align:"center",margin:0});
-s.addNotes("Title: PXR pEC50 prediction, OpenADMET blind challenge. Final rank #12/100+ qualifying teams (Phase 2 leaderboard). Phase 1 rank 39. 3-model ensemble, all open-source.");}
+s.addNotes("Title: PXR pEC50 prediction, OpenADMET blind challenge. Official Tier 1, activity track (43-entry top tier, statistically indistinguishable from rank #1). Phase 1 rank 39. 3-model ensemble, all open-source.");}
 
 // SLIDE 2 — Biology & Challenge
 {const s=ls();
@@ -357,8 +357,8 @@ s.addNotes("Phase 2 expands prediction range both ways. 8 more inactives, 22 mor
 
 // SLIDE 13 — Final Submission
 {const s=ss();
-addHdr(s,"FINAL SUBMISSION","Phase 2 Leaderboard — Rank #12 / 100+ Teams");
-const fm=[{lbl:"Final LB Rank",val:"#12",hi:true,sub:"of 100+ qualifying teams"},{lbl:"LB RAE",val:"0.5841",hi:false,sub:"Phase 2 leaderboard"},{lbl:"LB MAE",val:"0.4213",hi:false,sub:"Phase 2 leaderboard"},{lbl:"LB Spearman",val:"0.8028",hi:false,sub:"rank-order correlation"}];
+addHdr(s,"FINAL SUBMISSION","Phase 2 — OpenADMET Tier 1 · Activity Track");
+const fm=[{lbl:"OpenADMET Standing",val:"Tier 1",hi:true,sub:"43-entry top tier"},{lbl:"LB RAE",val:"0.5841",hi:false,sub:"Phase 2 leaderboard"},{lbl:"LB MAE",val:"0.4213",hi:false,sub:"Phase 2 leaderboard"},{lbl:"LB Spearman",val:"0.8028",hi:false,sub:"rank-order correlation"}];
 fm.forEach((m,i)=>{
   s.addShape(pres.shapes.ROUNDED_RECTANGLE,{x:0.35+i*2.35,y:0.65,w:2.2,h:0.95,fill:{color:m.hi?"D6F5ED":C.white},rectRadius:0.07,shadow:mkSh(),line:{color:m.hi?C.mint:C.lightGray,width:m.hi?2:0.5}});
   s.addText(m.val,{x:0.35+i*2.35,y:0.7,w:2.2,h:0.55,fontSize:m.hi?20:15,bold:true,color:m.hi?C.teal:C.navy,fontFace:"Trebuchet MS",align:"center",valign:"middle",margin:0});
@@ -367,17 +367,17 @@ fm.forEach((m,i)=>{
 });
 s.addChart(pres.charts.LINE,[{name:"RAE",labels:["Phase 1\n(on Set 1)","Aug2 baseline\n50/25/25","v2\n60/36/4","FINAL\n75/15/10 ★"],values:[0.5589,0.4811,0.4499,0.4471]}],{x:0.3,y:1.72,w:5.5,h:3.12,chartColors:["028090"],chartArea:{fill:{color:C.white},roundedCorners:true},catAxisLabelColor:C.navy,valAxisLabelColor:C.slate,valGridLine:{color:C.lightGray,size:0.5},catGridLine:{style:"none"},showValue:true,dataLabelColor:C.navy,dataLabelFormatCode:"0.0000",lineSize:3,lineSmooth:false,showLegend:false,valAxisMinVal:0.42,valAxisMaxVal:0.58,showTitle:true,title:"RAE Progression Through Phase 2 (Holdout-30)"});
 s.addText("Submission Details",{x:6.05,y:1.72,w:3.65,h:0.3,fontSize:13,bold:true,color:C.navy,fontFace:"Trebuchet MS",margin:0});
-const det=[["File","submission_blend_751510.csv"],["Compounds","513 total (253 Set 1 + 260 Set 2)"],["Blend","75% pp50 + 15% p13d + 10% UniMol"],["LB Rank","#12 / 100+ qualifying teams"],["LB RAE","0.5841  ·  LB MAE 0.4213"],["LB Spearman","0.8028  ·  LB R² 0.5528"],["Holdout-30 RAE","0.4471 (proxy, Set 1 labels)"]];
+const det=[["File","submission_blend_751510.csv"],["Compounds","513 total (253 Set 1 + 260 Set 2)"],["Blend","75% pp50 + 15% p13d + 10% UniMol"],["LB Standing","Tier 1, Activity Track (of 43)"],["LB RAE","0.5841  ·  LB MAE 0.4213"],["LB Spearman","0.8028  ·  LB R² 0.5528"],["Holdout-30 RAE","0.4471 (proxy, Set 1 labels)"]];
 det.forEach((d,i)=>{const y=2.08+i*0.53;
   s.addShape(pres.shapes.RECTANGLE,{x:6.0,y,w:3.65,h:0.49,fill:{color:i%2===0?C.white:C.cardBg},line:{color:C.lightGray,width:0.5}});
   s.addText(d[0],{x:6.1,y,w:0.88,h:0.49,fontSize:9,bold:true,color:C.slate,fontFace:"Calibri",valign:"middle",margin:0});
   s.addText(d[1],{x:7.02,y,w:2.55,h:0.49,fontSize:9,color:C.darkSlate,fontFace:"Calibri",valign:"middle",margin:0});
 });
-s.addNotes("Final submission: LB rank #12/100+, RAE 0.5841, MAE 0.4213, Spearman 0.8028. Holdout-30 proxy was 0.4471.");}
+s.addNotes("Final submission: OpenADMET Tier 1 (activity track), RAE 0.5841, MAE 0.4213, Spearman 0.8028. Holdout-30 proxy was 0.4471. 43 entries placed in Tier 1 — all statistically indistinguishable from rank #1.");}
 
 // SLIDE 14 — Head-to-Head Comparison vs Rank #1
 {const s=ls();
-addHdr(s,"COMPETITION ANALYSIS","Open-Source vs. Rank #1 — No Significant Gap");
+addHdr(s,"COMPETITION ANALYSIS","Open-Source vs. Rank #1 — Tier 1 Confirmed");
 
 // Big p-value callout
 s.addShape(pres.shapes.ROUNDED_RECTANGLE,{x:0.3,y:0.72,w:4.55,h:1.3,fill:{color:"D6F5ED"},rectRadius:0.08,shadow:mkSh(),line:{color:C.mint,width:2}});
@@ -386,7 +386,7 @@ s.addText("NOT statistically significant  ·  HB-adjusted threshold: 0.0001",{x:
 
 // MAE comparison bar chart
 s.addChart(pres.charts.BAR,[
-  {name:"MAE",labels:["Gashaw  (#12)","matcha-croissant  (#1)"],values:[0.4213,0.4061]},
+  {name:"MAE",labels:["Gashaw  (Tier 1)","matcha-croissant  (#1)"],values:[0.4213,0.4061]},
 ],{x:0.3,y:2.12,w:4.55,h:1.85,barDir:"bar",
   chartColors:["028090","D97706"],
   chartArea:{fill:{color:C.white},roundedCorners:true},
@@ -413,7 +413,7 @@ s.addText("The rank gap is a leaderboard artifact of a 260-compound test set —
 
 // Right: three insight cards
 const h2h=[
-  {title:"Test set too small to separate close competitors",body:"260 Set 2 compounds with MAE SD ~0.029. All top-12 entries fall within one bootstrap SD of each other — statistically a single cluster."},
+  {title:"Official OpenADMET Tier 1 designation",body:"OpenADMET's sequential significance testing placed 43 activity-track entries in Tier 1 — all statistically indistinguishable from rank #1. This submission is one of them."},
   {title:"Where the remaining gap lives",body:"Inactives (pEC50 < 4.0): our asymmetric BCE reduced but did not eliminate over-prediction bias. This is the one region where further work would help."},
   {title:"Open-source achieves statistical parity",body:"Chemprop + UniMol + RDKit — no proprietary data, no private models — matches the rank #1 entry within the noise floor of the evaluation."},
 ];
@@ -429,7 +429,7 @@ s.addNotes("Bootstrap head-to-head: Gashaw MAE 0.4213±0.0296 vs matcha-croissan
 s.addText("Conclusions & Lessons Learned",{x:0.6,y:0.25,w:8.8,h:0.7,fontSize:30,bold:true,color:C.white,fontFace:"Trebuchet MS",margin:0});
 s.addShape(pres.shapes.LINE,{x:0.6,y:1.0,w:3.5,h:0,line:{color:C.mint,width:2}});
 const cols=[
-  {title:"Achievements",color:C.mint,items:["Phase 2 final rank #12 / 100+ qualifying teams · LB MAE 0.4213 · Spearman 0.8028","Phase 1 rank #39 → Phase 2 rank #12 — 27-place improvement, open-source tools only","Asymmetric BCE reduces inactive over-prediction bias: +0.965 → +0.788 units","Phase 2 expands prediction range: floor 3.07→2.73, ceiling 5.80→6.00"]},
+  {title:"Achievements",color:C.mint,items:["OpenADMET Tier 1, activity track — statistically indistinguishable from rank #1 · MAE 0.4213 · Spearman 0.8028","Phase 1 rank #39 → Phase 2 Tier 1 — 27-rank improvement with open-source tools only","Asymmetric BCE reduces inactive over-prediction bias: +0.965 → +0.788 units","Phase 2 expands prediction range: floor 3.07→2.73, ceiling 5.80→6.00"]},
   {title:"Key Lessons",color:C.amber,items:["OOF cross-validation is unreliable for analog-expansion designs — blind test is the only real signal","External ChEMBL data degrades performance — one assay protocol per model, no mixing","Symmetric BCE hurts potent predictions — asymmetric (inactives only) is the correct design","Moderate compounds (65% of test set) drive net accuracy — never sacrifice them for edge cases"]},
   {title:"Future Directions",color:"5DCAA5",items:["Protein structure-aware models: PXR's flexible pocket calls for docking-based 3D features","Active learning: use potency gradients within analog series to guide synthesis","Uncertainty-aware training: weight loss by pEC50 std error to reduce the noise floor","Graph-transformer hybrid: combine 2D scaffold topology with 3D conformer geometry end-to-end"]},
 ];
