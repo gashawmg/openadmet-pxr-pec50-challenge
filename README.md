@@ -194,7 +194,7 @@ All pairwise model correlations < 0.95, confirming meaningful ensemble diversity
 
 Evaluating all historical predictions against the 252 Analog Set 1 compounds revealed the dominant error mode: **activity cliffs driven by low-potency compounds**.
 
-- **22% of test compounds** (pEC50 < 4.0, N=55) account for **60% of total RAE** — models over-predict their activity by +0.97 pEC50 units on average
+- **22% of test compounds** (pEC50 < 4.0, N=55) account for **53% of total RAE** — models over-predict their activity by +0.99 pEC50 units on average
 - These low-potency compounds share scaffold topology with active training compounds (ECFP4 Tanimoto ≥ 0.5), making them appear "active" to a 2D graph network
 - 31 high-uncertainty compounds (pEC50 std error > 0.3) have RAE = 2.0 — nearly 4× worse than low-uncertainty compounds, setting an irreducible noise floor
 
@@ -338,7 +338,7 @@ total_loss = 0.8 × MSE(reg_head, pEC50) + 0.2 × BCE_asymmetric(clf_head, is_ac
 
 **The asymmetric BCE is the key innovation.** Standard binary cross-entropy penalises both false positives (inactive predicted as active) and false negatives (active predicted as inactive). The false-negative penalty exerts a downward pull on all active embeddings, compressing the potency ceiling and worsening high-potency predictions. The asymmetric variant computes classification loss **only for inactive compounds** (pEC50 < 4.0). Active compounds contribute zero classification gradient, so the trunk learns one lesson from the auxiliary head: do not encode inactives the same way as actives.
 
-**What problem it addresses:** Inactive over-prediction — the dominant Phase 2 error mode. When the Phase 1 labels were unblinded, 22% of test compounds (pEC50 < 4.0) accounted for 60% of total RAE, with models over-predicting by +0.97 pEC50 units on average. These inactives share scaffold topology with active training compounds, making them appear "active" to a purely regression-based 2D graph. The classification head creates an explicit discriminative boundary, reducing inactive over-prediction bias from +0.965 (symmetric BCE) to +0.788 (asymmetric BCE) without pulling potent predictions downward.
+**What problem it addresses:** Inactive over-prediction — the dominant Phase 2 error mode. When the Phase 1 labels were unblinded, 22% of test compounds (pEC50 < 4.0) accounted for 53% of total RAE, with models over-predicting by +0.99 pEC50 units on average. These inactives share scaffold topology with active training compounds, making them appear "active" to a purely regression-based 2D graph. The classification head creates an explicit discriminative boundary, reducing inactive over-prediction bias from +0.965 (symmetric BCE) to +0.788 (asymmetric BCE) without pulling potent predictions downward.
 
 **Key limitation:** p13d's standalone holdout-30 RAE (0.5463) is the weakest of the three models. Despite correctly suppressing inactive bias, its regression head is noisier than pp50 across all activity regions — a consequence of the joint loss splitting gradient between the regression and classification objectives. Per-region comparison on holdout-30 confirms that p13d under-performs pp50 even in the inactive region it was designed to fix (inactive MAE 0.962 vs pp50's 0.775). This is why p13d carries only 15% weight in the final blend, reduced from 36% in the previous v2 submission.
 
@@ -449,7 +449,7 @@ The Phase 1 submission achieved **MAE 0.4468, RAE 0.5606, Rank 39** on 513 blind
 
 ### Phase 2 — Refinement
 
-After the 252 Set 1 labels were unblinded, analysis revealed that 22% of test compounds (pEC50 < 4.0 inactives) drove 60% of total RAE through systematic over-prediction. This motivated the Phase 2 architectural response: MultitaskMPNN with an asymmetric classification head (v4_13d) to discriminate inactives without compressing the potency ceiling. The intermediate 3-way ensemble reached **RAE 0.5298** on the 252 unblinded compounds — a 0.029 improvement over Phase 1.
+After the 252 Set 1 labels were unblinded, analysis revealed that 22% of test compounds (pEC50 < 4.0 inactives) drove 53% of total RAE through systematic over-prediction. This motivated the Phase 2 architectural response: MultitaskMPNN with an asymmetric classification head (v4_13d) to discriminate inactives without compressing the potency ceiling. The intermediate 3-way ensemble reached **RAE 0.5298** on the 252 unblinded compounds — a 0.029 improvement over Phase 1.
 
 ### Phase 2 — Final Submission
 

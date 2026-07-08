@@ -183,11 +183,11 @@ addHdr(s,"PHASE 2 ANALYSIS","What the Unblinded Labels Revealed",C.amber);
 s.addShape(pres.shapes.ROUNDED_RECTANGLE,{x:0.4,y:0.72,w:4.5,h:2.25,fill:{color:C.redLt},rectRadius:0.08,shadow:mkSh(),line:{color:C.red,width:1.5}});
 s.addText("22%",{x:0.4,y:0.82,w:4.5,h:1.0,fontSize:66,bold:true,color:C.red,fontFace:"Trebuchet MS",align:"center",valign:"middle",margin:0});
 s.addText("of test compounds (pEC50 < 4.0, inactives)",{x:0.6,y:1.86,w:4.1,h:0.27,fontSize:11,color:"7F1D1D",fontFace:"Calibri",align:"center",margin:0});
-s.addText("drove  60%  of total RAE",{x:0.6,y:2.14,w:4.1,h:0.33,fontSize:15,bold:true,color:C.red,fontFace:"Trebuchet MS",align:"center",margin:0});
-s.addText("Average over-prediction: +0.97 pEC50 units",{x:0.6,y:2.5,w:4.1,h:0.28,fontSize:10.5,italic:true,color:"7F1D1D",fontFace:"Calibri",align:"center",margin:0});
+s.addText("drove  53%  of total RAE",{x:0.6,y:2.14,w:4.1,h:0.33,fontSize:15,bold:true,color:C.red,fontFace:"Trebuchet MS",align:"center",margin:0});
+s.addText("Average over-prediction: +0.99 pEC50 units",{x:0.6,y:2.5,w:4.1,h:0.28,fontSize:10.5,italic:true,color:"7F1D1D",fontFace:"Calibri",align:"center",margin:0});
 s.addChart(pres.charts.BAR,[
   {name:"% of compounds",labels:["Inactive\n(<4.0)","Moderate\n(4-5.5)","Potent\n(>5.5)"],values:[22,63,15]},
-  {name:"% of RAE",labels:["Inactive\n(<4.0)","Moderate\n(4-5.5)","Potent\n(>5.5)"],values:[60,28,12]},
+  {name:"% of RAE",labels:["Inactive\n(<4.0)","Moderate\n(4-5.5)","Potent\n(>5.5)"],values:[53,33,14]},
 ],{x:5.0,y:0.72,w:4.65,h:2.55,barDir:"col",chartColors:["DC2626","028090"],chartArea:{fill:{color:C.lightBg},roundedCorners:true},catAxisLabelColor:C.navy,valAxisLabelColor:C.slate,valGridLine:{color:C.lightGray,size:0.5},catGridLine:{style:"none"},showValue:true,dataLabelColor:C.navy,dataLabelFormatCode:"0",showLegend:true,legendPos:"t",legendColor:C.navy});
 s.addText("Root Cause & Phase 2 Response",{x:0.4,y:3.1,w:9.2,h:0.32,fontSize:13,bold:true,color:C.navy,fontFace:"Trebuchet MS",margin:0});
 const resp=[
@@ -200,7 +200,7 @@ resp.forEach((r,i)=>{
   s.addText(r.title,{x:0.6+i*3.17,y:3.6,w:2.6,h:0.28,fontSize:11,bold:true,color:r.color,fontFace:"Trebuchet MS",margin:0});
   s.addText(r.body,{x:0.6+i*3.17,y:3.92,w:2.6,h:1.22,fontSize:9.5,color:C.darkSlate,fontFace:"Calibri",margin:0});
 });
-s.addNotes("Diagnosis: 22% of compounds (inactives) drove 60% of RAE. Two fixes: asymmetric BCE architecture and data augmentation with confirmed inactives and high-potency hits.");}
+s.addNotes("Diagnosis: 22% of compounds (inactives) drove 53% of RAE (measured on unblinded Set 1). Two fixes: asymmetric BCE architecture and data augmentation with confirmed inactives and high-potency hits.");}
 
 // SLIDE 8 — Asymmetric BCE
 {const s=ls();
@@ -446,4 +446,4 @@ s.addNotes("Closing: three achievements, four key lessons (OOF unreliability is 
 const outFile = process.env.PPTX_OUT || "D:/unimol_finetuning/pxr_challenge_presentation_v4.pptx";
 pres.writeFile({fileName: outFile})
   .then(()=>console.log("DONE — saved to " + outFile))
-  .catch(err=>{console.error(err);process.exit(1);});
+  .catch(err=>{console.e
