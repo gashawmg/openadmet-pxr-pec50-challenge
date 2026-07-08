@@ -38,6 +38,20 @@
 <div class="subtitle">Phase 1 test set &nbsp;·&nbsp; N=253 compounds &nbsp;·&nbsp;
    Chemprop baseline (simple avg, 10-fold) &nbsp;&amp;&nbsp; Phase 1 ensemble</div>
 
+<div style="background:#1a2e4a;border-radius:8px;padding:14px 20px;margin-bottom:18px;max-width:1300px;">
+  <div style="color:#8ecae6;font-size:11px;font-weight:600;letter-spacing:1px;margin-bottom:10px;">FINAL LEADERBOARD — PHASE 2 (513 compounds, all blind) · OpenADMET Tier 1</div>
+  <div style="display:flex;gap:28px;flex-wrap:wrap;">
+    <div style="text-align:center;"><div style="font-size:22px;font-weight:700;color:#fff;">0.4213</div><div style="font-size:11px;color:#8ecae6;margin-top:2px;">MAE</div></div>
+    <div style="text-align:center;"><div style="font-size:22px;font-weight:700;color:#fff;">0.5841</div><div style="font-size:11px;color:#8ecae6;margin-top:2px;">RAE</div></div>
+    <div style="text-align:center;"><div style="font-size:22px;font-weight:700;color:#fff;">0.5528</div><div style="font-size:11px;color:#8ecae6;margin-top:2px;">R²</div></div>
+    <div style="text-align:center;"><div style="font-size:22px;font-weight:700;color:#fff;">0.8028</div><div style="font-size:11px;color:#8ecae6;margin-top:2px;">Spearman ρ</div></div>
+    <div style="text-align:center;"><div style="font-size:22px;font-weight:700;color:#fff;">0.6221</div><div style="font-size:11px;color:#8ecae6;margin-top:2px;">Kendall's τ</div></div>
+    <div style="border-left:1px solid #2d4a6a;margin:0 4px;"></div>
+    <div style="text-align:center;align-self:center;"><div style="font-size:15px;font-weight:700;color:#02C39A;">Tier 1</div><div style="font-size:11px;color:#8ecae6;margin-top:2px;">Activity track<br>43-entry top tier</div></div>
+  </div>
+  <div style="font-size:10px;color:#5a7a9a;margin-top:10px;">Charts below analyse the 253 unblinded Set 1 compounds only (Phase 1 labels released mid-challenge)</div>
+</div>
+
 <div id="tooltip"></div>
 
 <div class="stat-row" id="stats-row"></div>
@@ -281,52 +295,4 @@ function buildDensity(key) {
 function buildStats(key) {
   const d = DATA[key];
   const n = d.length;
-  const mae  = d.reduce((s,r)=>s+r.abs_err,0)/n;
-  const bias  = d.reduce((s,r)=>s+r.err,0)/n;
-  const mn = Math.min(...d.map(r=>r.pred)), mx = Math.max(...d.map(r=>r.pred));
-  const tm = Math.min(...d.map(r=>r.true)), tx = Math.max(...d.map(r=>r.true));
-  const cov = (mx-mn)/(tx-tm);
-  const n_large = d.filter(r=>r.abs_err>0.5).length;
-  document.getElementById('stats-row').innerHTML = `
-    <div class="stat"><b>${mae.toFixed(4)}</b>MAE</div>
-    <div class="stat"><b>${bias>=0?'+':''}${bias.toFixed(4)}</b>Mean bias</div>
-    <div class="stat"><b>${mn.toFixed(2)} – ${mx.toFixed(2)}</b>Pred range</div>
-    <div class="stat"><b>${(cov*100).toFixed(0)}%</b>Range coverage vs actual</div>
-    <div class="stat"><b>${n_large} / ${n}</b>|error| > 0.5 log</div>
-  `;
-}
-
-function buildWorst(key) {
-  const d = [...DATA[key]].sort((a,b)=>b.abs_err-a.abs_err).slice(0,20);
-  let html = '';
-  d.forEach((r,i) => {
-    const col = r.err<0?'#c0392b':'#2980b9';
-    html += `<tr>
-      <td>${i+1}</td>
-      <td style="font-size:11px;">${r.id}</td>
-      <td>${r.true.toFixed(3)}</td>
-      <td>${r.pred.toFixed(3)}</td>
-      <td style="color:${col}">${r.err>=0?'+':''}${r.err.toFixed(3)}</td>
-      <td>${r.abs_err.toFixed(3)}</td>
-      <td>${r.emax !== null ? r.emax.toFixed(2) : 'N/A'}</td>
-      <td style="font-size:10px;color:#666;">${r.smiles}</td>
-    </tr>`;
-  });
-  document.getElementById('worstBody').innerHTML = html;
-}
-
-function render(key) {
-  buildScatter(key); buildResid(key);
-  buildBinChart(key); buildDensity(key);
-  buildStats(key); buildWorst(key);
-}
-
-document.getElementById('modelSel').addEventListener('change', e => {
-  activeModel = e.target.value;
-  render(activeModel);
-});
-
-render('ens');
-</script>
-</body>
-</html>
+  const mae 

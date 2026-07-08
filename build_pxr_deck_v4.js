@@ -367,13 +367,13 @@ fm.forEach((m,i)=>{
 });
 s.addChart(pres.charts.LINE,[{name:"RAE",labels:["Phase 1\n(on Set 1)","Aug2 baseline\n50/25/25","v2\n60/36/4","FINAL\n75/15/10 ★"],values:[0.5589,0.4811,0.4499,0.4471]}],{x:0.3,y:1.72,w:5.5,h:3.12,chartColors:["028090"],chartArea:{fill:{color:C.white},roundedCorners:true},catAxisLabelColor:C.navy,valAxisLabelColor:C.slate,valGridLine:{color:C.lightGray,size:0.5},catGridLine:{style:"none"},showValue:true,dataLabelColor:C.navy,dataLabelFormatCode:"0.0000",lineSize:3,lineSmooth:false,showLegend:false,valAxisMinVal:0.42,valAxisMaxVal:0.58,showTitle:true,title:"RAE Progression Through Phase 2 (Holdout-30)"});
 s.addText("Submission Details",{x:6.05,y:1.72,w:3.65,h:0.3,fontSize:13,bold:true,color:C.navy,fontFace:"Trebuchet MS",margin:0});
-const det=[["File","submission_blend_751510.csv"],["Compounds","513 total (253 Set 1 + 260 Set 2)"],["Blend","75% pp50 + 15% p13d + 10% UniMol"],["LB Standing","Tier 1, Activity Track (of 43)"],["LB RAE","0.5841  ·  LB MAE 0.4213"],["LB Spearman","0.8028  ·  LB R² 0.5528"],["Holdout-30 RAE","0.4471 (proxy, Set 1 labels)"]];
-det.forEach((d,i)=>{const y=2.08+i*0.53;
-  s.addShape(pres.shapes.RECTANGLE,{x:6.0,y,w:3.65,h:0.49,fill:{color:i%2===0?C.white:C.cardBg},line:{color:C.lightGray,width:0.5}});
-  s.addText(d[0],{x:6.1,y,w:0.88,h:0.49,fontSize:9,bold:true,color:C.slate,fontFace:"Calibri",valign:"middle",margin:0});
-  s.addText(d[1],{x:7.02,y,w:2.55,h:0.49,fontSize:9,color:C.darkSlate,fontFace:"Calibri",valign:"middle",margin:0});
+const det=[["File","submission_blend_751510.csv"],["Compounds","513 total (253 Set 1 + 260 Set 2)"],["Blend","75% pp50 + 15% p13d + 10% UniMol"],["LB Standing","Tier 1, Activity Track (of 43)"],["LB MAE  ·  RAE","0.4213  ·  0.5841"],["LB R²","0.5528"],["LB Spearman  ·  Kendall τ","0.8028  ·  0.6221"],["Holdout-30 RAE","0.4471 (proxy, Set 1 labels)"]];
+det.forEach((d,i)=>{const y=2.08+i*0.48;
+  s.addShape(pres.shapes.RECTANGLE,{x:6.0,y,w:3.65,h:0.44,fill:{color:i%2===0?C.white:C.cardBg},line:{color:C.lightGray,width:0.5}});
+  s.addText(d[0],{x:6.1,y,w:0.88,h:0.44,fontSize:9,bold:true,color:C.slate,fontFace:"Calibri",valign:"middle",margin:0});
+  s.addText(d[1],{x:7.02,y,w:2.55,h:0.44,fontSize:9,color:C.darkSlate,fontFace:"Calibri",valign:"middle",margin:0});
 });
-s.addNotes("Final submission: OpenADMET Tier 1 (activity track), RAE 0.5841, MAE 0.4213, Spearman 0.8028. Holdout-30 proxy was 0.4471. 43 entries placed in Tier 1 — all statistically indistinguishable from rank #1.");}
+s.addNotes("Final submission: OpenADMET Tier 1 (activity track). MAE 0.4213 · RAE 0.5841 · R² 0.5528 · Spearman 0.8028 · Kendall τ 0.6221. Holdout-30 proxy was 0.4471. 43 entries placed in Tier 1 — all statistically indistinguishable from rank #1.");}
 
 // SLIDE 14 — Head-to-Head Comparison vs Rank #1
 {const s=ls();
@@ -445,5 +445,5 @@ s.addNotes("Closing: three achievements, four key lessons (OOF unreliability is 
 
 const outFile = process.env.PPTX_OUT || "D:/unimol_finetuning/pxr_challenge_presentation_v4.pptx";
 pres.writeFile({fileName: outFile})
-  .then(()=>console.log("DONE — saved to " + outFile))
-  .catch(err=>{console.e
+  .then(()=>console.log("DONE \u2014 saved " + outFile))
+  .catch(err=>{console.error(err);process.exit(1);});
